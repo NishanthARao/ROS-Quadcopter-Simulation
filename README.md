@@ -63,7 +63,7 @@ catkin_make
 
 This should build the directory without any errors. If you find any errors, please check your steps with those mentioned here.
 
-Once installed, open another terminal and load the quadcopter into gazebo simulator
+Once installed, close the terminal. Open another terminal and load the quadcopter into gazebo simulator
 ```
 roslaunch fly_bot Kwad_gazebo.launch
 ```
