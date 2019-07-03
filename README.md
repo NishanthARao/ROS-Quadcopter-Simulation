@@ -37,6 +37,7 @@ catkin_make
 
 3.Add this workspace to your linux environment by sourcing the setup file to .bashrc. Assuming you are inside the home directory, 
 ```
+cd ~
 gedit .bashrc
 ```
 Add this line at the end of the file.
