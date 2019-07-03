@@ -51,7 +51,9 @@ cd ~/danger_ws/src
 catkin_create_pkg fly_bot rospy std_msgs
 ```
 
-5.Download all the folders and files into the folder fly_bot.
+5.Download all the folders and files into the folder fly_bot. i.e all the folders and files seen in this repo must be present inside the fly_bot. Donot create another folder inside the fly_bot with all theses files.
+
+Note: You may have to replace the existing src folder and CMakeLists and package files with these folder and files.
 
 6.Execute the following command to build into your ROS workspace
 ```
@@ -61,7 +63,7 @@ catkin_make
 
 This should build the directory without any errors. If you find any errors, please check your steps with those mentioned here.
 
-Once installed, load the quadcopter into gazebo simulator
+Once installed, open another terminal and load the quadcopter into gazebo simulator
 ```
 roslaunch fly_bot Kwad_gazebo.launch
 ```
