@@ -1,0 +1,226 @@
+<?xml version="1.0"?>
+<robot>
+
+	<!-- ================================= -->
+	<!-- Define Gazebo tags for every link -->
+	<gazebo reference="base_link1">
+		<material>Gazebo/Red</material>
+	</gazebo>
+	
+	<gazebo reference="base_link2">
+		<material>Gazebo/White</material>
+	</gazebo>
+	
+	<gazebo reference="plate1">
+		<material>Gazebo/Black</material>
+	</gazebo>
+	
+	<gazebo reference="plate2">
+		<material>Gazebo/Blue</material>
+	</gazebo>
+	
+	<gazebo reference="cyl1">
+		<material>Gazebo/Gold</material>
+	</gazebo>
+	
+	<gazebo reference="cyl2">
+		<material>Gazebo/Gold</material>
+	</gazebo>
+	
+	<gazebo reference="cyl3">
+		<material>Gazebo/Gold</material>
+	</gazebo>
+	
+	<gazebo reference="cyl4">
+		<material>Gazebo/Gold</material>
+	</gazebo>
+	
+	<gazebo reference="arduino" />
+	
+	<gazebo reference="camera_link">
+		<sensor type="camera" name="camera1">
+			<update_rate>30</update_rate>
+			<camera name="head">
+				<horizontal_fov>1.3962634</horizontal_fov>
+				<image>
+					<width>800</width>
+					<height>800</height>
+					<format>R8G8B8</format>
+				</image>
+				<clip>
+					<near>0.02</near>
+					<far>300</far>
+				</clip>
+				<noise>
+					<type>gaussian</type>
+					<mean>0</mean>
+					<stddev>0.007</stddev>
+				</noise>
+			</camera>
+			
+			<plugin name="camera_controller" filename="libgazebo_ros_camera.so" >
+				<alwaysOn>true</alwaysOn>
+				<updateRate>0.0</updateRate>
+				<cameraName>Kwad/camera1</cameraName>
+				<imageTopicName>image_raw</imageTopicName>
+				<cameraInfoTopicName>camera_info</cameraInfoTopicName>
+				<frameName>camera_link</frameName>
+				<hackBaseline>0.07</hackBaseline>
+				<distortionK1>0.0</distortionK1>
+				<distortionK2>0.0</distortionK2>
+				<distortionK3>0.0</distortionK3>
+				<distortionT1>0.0</distortionT1>
+				<distortionT2>0.0</distortionT2>
+			</plugin>
+		</sensor>
+    </gazebo>
+					
+	<gazebo reference="prop_front_right">
+		<material>Gazebo/Black</material>
+	</gazebo>
+	
+	<gazebo reference="prop_front_left">
+		<material>Gazebo/Black</material>
+	</gazebo>
+	
+	<gazebo reference="prop_back_right">
+		<material>Gazebo/Black</material>
+	</gazebo>
+	
+	<gazebo reference="prop_back_left">
+		<material>Gazebo/Black</material>
+	</gazebo>
+	
+	<!-- ================================= -->
+	<!-- Define the lift-Drag plugin -->
+	<gazebo>
+		<!-- Provide a Positive Velocity -->
+		<plugin name="quad_prop1" filename="libLiftDragPlugin.so">
+			<a0>0.1</a0>
+			<cla>0.1</cla>
+			<cda>0.01</cda>
+			<cma>0.0</cma>
+			<alpha_stall>0.2</alpha_stall>
+			<cla_stall>-0.2</cla_stall>
+			<cda_stall>1.0</cda_stall>
+			<cma_stall>0.0</cma_stall>
+			<cp>0 0.5 0</cp>
+			<area>0.762</area>
+			<air_density>1.2041</air_density>
+			<forward>1 0 0</forward>
+			<upward>0 0 -1</upward>
+			<link_name>prop_front_right</link_name>
+			<control_joint>joint_front_right_prop</control_joint>
+		</plugin>
+	</gazebo>
+	
+	<gazebo>
+		<!-- Provide a Negative Velocity -->
+		<plugin name="quad_prop2" filename="libLiftDragPlugin.so">
+			<a0>0.1</a0>
+			<cla>0.1</cla>
+			<cda>0.01</cda>
+			<cma>0.0</cma>
+			<alpha_stall>0.2</alpha_stall>
+			<cla_stall>-0.2</cla_stall>
+			<cda_stall>1.0</cda_stall>
+			<cma_stall>0.0</cma_stall>
+			<cp>0 0.5 0</cp>
+			<area>0.762</area>
+			<air_density>1.2041</air_density>
+			<forward>1 0 0</forward>
+			<upward>0 0 1</upward>
+			<link_name>prop_front_left</link_name>
+			<control_joint>joint_front_left_prop</control_joint>
+		</plugin>
+	</gazebo>
+	
+	<gazebo>
+		<!-- Provide a Negative Velocity -->
+		<plugin name="quad_prop3" filename="libLiftDragPlugin.so">
+			<a0>0.1</a0>
+			<cla>0.1</cla>
+			<cda>0.01</cda>
+			<cma>0.0</cma>
+			<alpha_stall>0.2</alpha_stall>
+			<cla_stall>-0.2</cla_stall>
+			<cda_stall>1.0</cda_stall>
+			<cma_stall>0.0</cma_stall>
+			<cp>0 0.5 0</cp>
+			<area>0.762</area>
+			<air_density>1.2041</air_density>
+			<forward>1 0 0</forward>
+			<upward>0 0 1</upward>
+			<link_name>prop_back_right</link_name>
+			<control_joint>joint_back_right_prop</control_joint>
+		</plugin>
+	</gazebo>
+	
+	<gazebo>
+		<!-- Provide a Positive Velocity -->
+		<plugin name="quad_prop4" filename="libLiftDragPlugin.so">
+			<a0>0.1</a0>
+			<cla>0.1</cla>
+			<cda>0.01</cda>
+			<cma>0.0</cma>
+			<alpha_stall>0.2</alpha_stall>
+			<cla_stall>-0.2</cla_stall>
+			<cda_stall>1.0</cda_stall>
+			<cma_stall>0.0</cma_stall>
+			<cp>0 0.5 0</cp>
+			<area>0.762</area>
+			<air_density>1.2041</air_density>
+			<forward>1 0 0</forward>
+			<upward>0 0 -1</upward>
+			<link_name>prop_back_left</link_name>
+			<control_joint>joint_back_left_prop</control_joint>
+		</plugin>
+	</gazebo>
+	<!-- The command must be +-+- format inside "data: []" -->
+	<!--<gazebo>
+		<plugin name="quad_prop4" filename="libLiftDragPlugin.so">
+			<a0>0.1</a0>
+			<cla>0.1</cla>
+			<cda>0.01</cda>
+			<cma>0.0</cma>
+			<alpha_stall>0.2</alpha_stall>
+			<cla_stall>-0.2</cla_stall>
+			<cda_stall>1.0</cda_stall>
+			<cma_stall>0.0</cma_stall>
+			<cp>0 0.5 0</cp>
+			<area>0.762</area>
+			<air_density>1.2041</air_density>
+			<forward>1 0 0</forward>
+			<upward>0 0 1</upward>
+			<link_name>prop_back_left</link_name>
+			<control_joint>joint_back_left_prop</control_joint>
+		</plugin>
+	</gazebo>-->
+	
+	<!-- Load the gazebo_ros_control plugin -->
+	<gazebo>
+		<plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+			<robotNameSpace>/Kwad</robotNameSpace>
+			<robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+		</plugin>
+	</gazebo>
+	
+	<!-- ================================= -->
+	<!-- <gazebo>
+	  <plugin name="skid_steer_drive_controller" filename="libgazebo_ros_skid_steer_drive.so">
+		<updateRate>100.0</updateRate>
+		<robotNamespace>/</robotNamespace>
+		<leftFrontJoint>fl_joint</leftFrontJoint>
+		<rightFrontJoint>fr_joint</rightFrontJoint>
+		<leftRearJoint>bl_joint</leftRearJoint>
+		<rightRearJoint>br_joint</rightRearJoint>
+		<wheelSeparation>0.4</wheelSeparation>
+		<wheelDiameter>0.215</wheelDiameter>
+		<robotBaseFrame>base_link1</robotBaseFrame>
+		<torque>20</torque>
+		<topicName>cmd_vel</topicName>
+		<broadcastTF>false</broadcastTF>
+	  </plugin>
+	</gazebo> -->
+	
+</robot>

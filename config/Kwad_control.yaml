@@ -1,0 +1,17 @@
+joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50
+
+joint_motor_controller:
+    type: velocity_controllers/JointGroupVelocityController
+    joints: 
+        - joint_front_right_prop
+        - joint_front_left_prop
+        - joint_back_left_prop
+        - joint_back_right_prop
+    gains:
+        joint_front_right_prop: {p: 10000, i: 1, d: 1000}
+        joint_front_left_prop: {p: 10000, i: 1, d: 1000}
+        joint_back_left_prop: {p: 10000, i: 1, d: 1000}
+        joint_back_right_prop: {p: 10000, i: 1, d: 1000}
+    

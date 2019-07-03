@@ -1,0 +1,482 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="Kwad">
+<!-- ======================================================== -->
+	<xacro:property name="width" value="0.0315" />
+	<xacro:property name="length" value="0.45" />
+	<xacro:property name="height" value="0.01" />
+	<xacro:property name="mass_fr" value="0.5" />
+	<xacro:property name="mass_pr" value="0.0055" />
+	<xacro:property name="pi_value" value="3.14159263" />
+	<xacro:property name="radiusp" value="0.20" />
+	<xacro:property name="prop_loc" value="0.15909" />
+<!-- ======================================================== -->	
+	<xacro:include filename="$(find fly_bot)/urdf/material.xacro" />
+	<xacro:include filename="$(find fly_bot)/urdf/Kwad.gazebo" />
+<!-- ======================================================== -->
+	<!-- Define inertial macro -->
+	<xacro:macro name="default_inertial" params="mass p ix_value iy_value iz_value" >
+		<inertial>
+			<origin xyz="0 0 0" rpy="0 0 ${p}" />
+			<mass value="${mass}" />
+			<inertia ixx="${ix_value}" ixy="0" ixz="0"
+					 iyy="${iy_value}" iyz="0" izz="${iz_value}" />
+		</inertial>
+	</xacro:macro> 
+<!-- ======================================================== -->	
+	<link name="base_link1">
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 ${pi_value/4}" />
+			
+			<geometry>
+				<box size="${width} ${length} ${height}" />
+			</geometry>
+			
+			<material name="red" />
+		</visual>
+		
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 ${pi_value/4}" />
+			
+			<geometry>
+				<box size="${width} ${length} ${height}" />
+			</geometry>
+		</collision>
+		
+		<xacro:default_inertial mass="${mass_fr}" p="${pi_value/4}" ix_value="${0.04989/2}" iy_value="${0.04989/2}" iz_value="${0.24057/2}" />
+		
+	</link>
+<!-- ======================================================== -->	
+	<link name="base_link2">
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 ${-pi_value/4}" />
+			
+			<geometry>
+				<box size="${width} ${length} ${height}" />
+			</geometry>
+			
+			<material name="white" />
+		</visual>
+		
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 ${-pi_value/4}" />
+			
+			<geometry>
+				<box size="${width} ${length} ${height}" />
+			</geometry>
+		</collision>
+		
+		<xacro:default_inertial mass="${mass_fr}" p="${-pi_value/4}" ix_value="${0.04989/2}" iy_value="${0.04989/2}" iz_value="${0.24057/2}" />
+	</link>
+<!-- ======================================================== -->
+	<link name="plate1">
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			
+			<geometry>
+				<box size="${0.12} ${0.12} ${0.01}" />
+			</geometry>
+			
+			<material name="black" />
+		</visual>
+		
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			
+			<geometry>
+				<box size="${0.12} ${0.12} ${0.01}" />
+			</geometry>
+		</collision>
+		
+		<xacro:default_inertial mass="${0.01}" p="${0}" ix_value="${0}" iy_value="${0}" iz_value="${2.4-5}" />
+	</link>
+<!-- ======================================================== -->
+	<link name="plate2">
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			
+			<geometry>
+				<box size="${0.05} ${0.03} ${0.005}" />
+			</geometry>
+			
+			<material name="blue" />
+		</visual>
+		
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			
+			<geometry>
+				<box size="${0.05} ${0.03} ${0.005}" />
+			</geometry>
+		</collision>
+		
+		<xacro:default_inertial mass="${0.001}" p="${0}" ix_value="${0}" iy_value="${0}" iz_value="${8.1666-7}" />
+	</link>
+<!-- ======================================================== -->
+	<link name="cyl1">
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			
+			<geometry>
+				<cylinder radius="0.016" length="0.02" />
+			</geometry>
+			
+			<material name="golden" />
+		</visual>
+		
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			
+			<geometry>
+				<cylinder radius="0.016" length="0.02" />
+			</geometry>
+		</collision>
+		
+		<xacro:default_inertial mass="${0.01}" p="${0}" ix_value="${8.95e-6}" iy_value="${8.95e-6}" iz_value="${2.23e-4}" />
+	</link>
+<!-- ======================================================== -->
+	<link name="cyl2">
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			
+			<geometry>
+				<cylinder radius="0.016" length="0.02" />
+			</geometry>
+			
+			<material name="golden" />
+		</visual>
+		
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			
+			<geometry>
+				<cylinder radius="0.016" length="0.02" />
+			</geometry>
+		</collision>
+		
+		<xacro:default_inertial mass="${0.01}" p="${0}" ix_value="${8.95e-6}" iy_value="${8.95e-6}" iz_value="${2.23e-4}" />
+	</link>
+<!-- ======================================================== -->
+	<link name="cyl3">
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			
+			<geometry>
+				<cylinder radius="0.016" length="0.02" />
+			</geometry>
+			
+			<material name="golden" />
+		</visual>
+		
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			
+			<geometry>
+				<cylinder radius="0.016" length="0.02" />
+			</geometry>
+		</collision>
+		
+		<xacro:default_inertial mass="${0.01}" p="${0}" ix_value="${8.95e-6}" iy_value="${8.95e-6}" iz_value="${2.23e-4}" />
+	</link>
+<!-- ======================================================== -->
+	<link name="cyl4">
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			
+			<geometry>
+				<cylinder radius="0.016" length="0.02" />
+			</geometry>
+			
+			<material name="golden" />
+		</visual>
+		
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			
+			<geometry>
+				<cylinder radius="0.016" length="0.02" />
+			</geometry>
+		</collision>
+		
+		<xacro:default_inertial mass="${0.01}" p="${0}" ix_value="${8.95e-6}" iy_value="${8.95e-6}" iz_value="${2.23e-4}" />
+	</link>
+<!-- ======================================================== -->
+	<link name="arduino">
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<mesh filename="package://fly_bot/meshes/22V10.dae" scale="0.005 0.005 0.005" />
+			</geometry>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<box size="0.1 0.1 0.001" />
+			</geometry>
+		</collision>
+		<xacro:default_inertial mass="${0.05}" p="${0}" ix_value="${0}" iy_value="${0}" iz_value="${8.33333e-5}" />
+	</link>
+<!-- ======================================================== -->	
+	<link name="camera_link">
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<box size="0.01 0.01 0.01" />
+			</geometry>
+			
+			<material name="red" />
+			
+		</visual>
+		
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<box size="0.01 0.01 0.01" />
+			</geometry>
+		</collision>
+		
+		<xacro:default_inertial mass="${1e-5}" p="${0}" ix_value="${1e-6}" iy_value="${1e-6}" iz_value="${1e-6}" />
+	</link>
+<!-- ======================================================== -->
+	<!-- Propellers of the quad: fr, fl, br, bl -->
+	<link name="prop_front_right">
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			
+			<geometry>
+				<box size="${0.03302/3} ${radiusp*0.8} ${0.001}" />
+			</geometry>
+			
+			<material name="black" />
+		</visual>
+		
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			
+			<geometry>
+				<box size="${0.03302/3} ${radiusp*0.8} ${0.001}" />
+			</geometry>
+		</collision>
+		
+		<xacro:default_inertial mass="${mass_pr}" p="${0}" ix_value="${0}" iy_value="${0}" iz_value="${4.42448e-5}" />	
+	</link>
+	
+	<link name="prop_front_left">
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			
+			<geometry>
+				<box size="${0.03302/3} ${radiusp*0.8} ${0.001}" />
+			</geometry>
+			
+			<material name="black"/>
+		</visual>
+		
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			
+			<geometry>
+				<box size="${0.03302/3} ${radiusp*0.8} ${0.001}" />
+			</geometry>
+		</collision>
+		
+		<xacro:default_inertial mass="${mass_pr}" p="${0}"  ix_value="${0}" iy_value="${0}" iz_value="${4.42448e-5}" />
+		
+	</link>
+	
+	<link name="prop_back_right">
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			
+			<geometry>
+				<box size="${0.03302/3} ${radiusp*0.8} ${0.001}" />
+			</geometry>
+			
+			<material name="black"/>
+		</visual>
+		
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			
+			<geometry>
+				<box size="${0.03302/3} ${radiusp*0.8} ${0.001}" />
+			</geometry>
+		</collision>
+		
+		<xacro:default_inertial mass="${mass_pr}" p="${0}"  ix_value="${0}" iy_value="${0}" iz_value="${4.42448e-5}" />
+		
+	</link>
+	
+	<link name="prop_back_left">
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			
+			<geometry>
+				<box size="${0.03302/3} ${radiusp*0.8} ${0.001}" />
+			</geometry>
+			
+			<material name="black"/>
+		</visual>
+		
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			
+			<geometry>
+				<box size="${0.03302/3} ${radiusp*0.8} ${0.001}" />
+			</geometry>
+		</collision>
+		
+		<xacro:default_inertial mass="${mass_pr}" p="${0}"  ix_value="${0}" iy_value="${0}" iz_value="${4.42448e-5}" />
+		
+	</link>
+<!-- ======================================================== -->
+	<!-- Define the joint between the arms of the frame -->
+	<joint name="center" type="fixed">
+		<parent link="base_link1" />
+		<child link="base_link2" />
+		
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+		<axis xyz="0 0 1" />
+	</joint>
+<!-- ======================================================== -->
+	<!-- Define joint between prop fr and frame -->
+	<joint name="joint_front_right_prop" type="continuous">
+		<parent link="base_link2" />
+		<child link="prop_front_right" />
+		<origin xyz="${prop_loc - 0.01} ${prop_loc - 0.01} 0.021" rpy="0 0 0"/>
+		<axis xyz="0 0 1" />
+	</joint>
+<!-- ======================================================== -->
+	<!-- Define joint between prop fl and frame -->
+	<joint name="joint_front_left_prop" type="continuous">
+		<parent link="base_link1" />
+		<child link="prop_front_left" />
+		<origin xyz="${-prop_loc + 0.01} ${prop_loc - 0.01} 0.021" rpy="0 0 0" />
+		<axis xyz="0 0 1" />
+	</joint>
+<!-- ======================================================== -->
+<!-- Define joint between prop br and frame -->
+	<joint name="joint_back_right_prop" type="continuous">
+		<parent link="base_link1" />
+		<child link="prop_back_right" />
+		<origin xyz="${prop_loc - 0.01} ${-prop_loc + 0.01} 0.021" rpy="0 0 0" />
+		<axis xyz="0 0 1" />
+	</joint>
+<!-- ======================================================== -->
+<!-- Define joint between prop br and frame -->
+	<joint name="joint_back_left_prop" type="continuous">
+		<parent link="base_link2" />
+		<child link="prop_back_left" />
+		<origin xyz="${-prop_loc + 0.01} ${-prop_loc + 0.01} 0.021" rpy="0 0 0" />
+		<axis xyz="0 0 1" />
+	</joint>
+<!-- ======================================================== -->
+<!-- Define joint between plate1 and frame -->
+	<joint name="joint_plate1_frame" type="fixed">
+		<parent link="base_link2" />
+		<child link="plate1" />
+		<origin xyz="${0} ${0} 0.005" rpy="0 0 0" />
+		<axis xyz="0 0 1" />
+	</joint>
+<!-- ======================================================== -->
+<!-- Define joint between plate1 and plate2 -->
+	<joint name="joint_plate2_frame" type="fixed">
+		<parent link="plate1" />
+		<child link="plate2" />
+		<origin xyz="${0} ${0} 0.007" rpy="0 0 0" />
+		<axis xyz="0 0 1" />
+	</joint>
+<!-- ======================================================== -->
+<!-- Define joint between cyl1 and frame -->
+	<joint name="joint_cyl1_frame" type="fixed">
+		<parent link="base_link2" />
+		<child link="cyl1" />
+		<origin xyz="${prop_loc - 0.01} ${prop_loc - 0.01} 0.01" rpy="0 0 0" />
+		<axis xyz="0 0 1" />
+	</joint>
+<!-- ======================================================== -->
+<!-- Define joint between cyl2 and frame -->
+	<joint name="joint_cyl2_frame" type="fixed">
+		<parent link="base_link2" />
+		<child link="cyl2" />
+		<origin xyz="${-prop_loc + 0.01} ${-prop_loc + 0.01} 0.01" rpy="0 0 0" />
+		<axis xyz="0 0 1" />
+	</joint>
+<!-- ======================================================== -->
+<!-- Define joint between cyl3 and frame -->
+	<joint name="joint_cyl3_frame" type="fixed">
+		<parent link="base_link1" />
+		<child link="cyl3" />
+		<origin xyz="${-prop_loc + 0.01} ${prop_loc - 0.01} 0.01" rpy="0 0 0" />
+		<axis xyz="0 0 1" />
+	</joint>
+<!-- ======================================================== -->
+<!-- Define joint between cyl4 and frame -->
+	<joint name="joint_cyl4_frame" type="fixed">
+		<parent link="base_link1" />
+		<child link="cyl4" />
+		<origin xyz="${prop_loc - 0.01} ${-prop_loc + 0.01} 0.01" rpy="0 0 0" />
+		<axis xyz="0 0 1" />
+	</joint>
+<!-- ======================================================== -->
+<!-- Define joint between Arduino and frame -->
+	<joint name="joint_arduino_frame" type="fixed">
+		<parent link="plate2" />
+		<child link="arduino" />
+		<origin xyz="${0} ${0} 0.005" rpy="0 0 0" />
+		<axis xyz="0 0 1" />
+	</joint>
+<!-- ======================================================== -->
+<!-- Define joint between Arduino and frame -->
+	<joint name="joint_camera_frame" type="fixed">
+		<parent link="plate2" />
+		<child link="camera_link" />
+		<origin xyz="${0.03} ${0} 0.005" rpy="0 0.1 0" />
+		<axis xyz="0 0 1" />
+	</joint>
+<!-- ======================================================== -->
+<!-- Add transmission elements -->
+	<transmission name="front_right_motor_joint" >
+		<type>transmission_interface/SimpleTransmission</type>	
+		<joint name="joint_front_right_prop">
+			<hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+		</joint>
+		<actuator name="BLDC_motor1">
+			<hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+			<mechanicalReduction>1</mechanicalReduction>
+		</actuator>
+	</transmission>
+	
+	<transmission name="front_left_motor_joint" >
+		<type>transmission_interface/SimpleTransmission</type>	
+		<joint name="joint_front_left_prop">
+			<hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+		</joint>
+		<actuator name="BLDC_motor2">
+			<hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+			<mechanicalReduction>1</mechanicalReduction>
+		</actuator>
+	</transmission>
+	
+	<transmission name="back_right_motor_joint" >
+		<type>transmission_interface/SimpleTransmission</type>	
+		<joint name="joint_back_right_prop">
+			<hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+		</joint>
+		<actuator name="BLDC_motor3">
+			<hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+			<mechanicalReduction>1</mechanicalReduction>
+		</actuator>
+	</transmission>
+	
+	<transmission name="back_left_motor_joint" >
+		<type>transmission_interface/SimpleTransmission</type>	
+		<joint name="joint_back_left_prop">
+			<hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+		</joint>
+		<actuator name="BLDC_motor4">
+			<hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+			<mechanicalReduction>1</mechanicalReduction>
+		</actuator>
+	</transmission>
+
+</robot>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<robot>
+	
+	<material name="white">
+		<color rgba="0.8 0.8 0.8 1" />
+	</material>
+	
+	<material name="black">
+		<color rgba="0.1 0.1 0.1 1" />
+	</material>
+	
+	<material name="red">
+		<color rgba="0.8 0.01 0.01 1" />
+	</material>
+	
+	<material name="blue">
+		<color rgba="0.01 0.01 0.8 1" />
+	</material>
+	
+	<material name="golden">
+		<color rgba="${212/255} ${175/255} ${55/255} 1" />
+	</material>
+	
+</robot>
