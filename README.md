@@ -1,6 +1,6 @@
 
 # ROS-Quadcopter-Simulation
-This is an on-going project on simulating drone and its applications on ROS-Gazebo
+This is an on-going project on simulating drone and its applications on ROS-Gazebo (melodic version of ROS and Gazebo version 9)
 
 This is a simulation of Joop-Brokking's Quadcopter. He has great tutorial videos on YouTube:
 
