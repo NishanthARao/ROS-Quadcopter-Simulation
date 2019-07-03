@@ -77,9 +77,13 @@ rostopic pub -1 /Kwad/joint_motor_controller/command std_msgs/Float64MultiArray 
 ```
 This provides a speed of:
 i)   50 units to front_right motor
+
 ii) -50 units to front_left motor
+
 iii) 50 units to back_left motor
+
 iv) -50 units to back_right motor
+
 Here, the negative sign denotes rotation in the opposite direction.
 
 
