@@ -76,6 +76,7 @@ Alternatively, you can provide commands to individual motors (here, there is no 
 rostopic pub -1 /Kwad/joint_motor_controller/command std_msgs/Float64MultiArray "data: [50, -50, 50, -50]"
 ```
 This provides a speed of:
+
 i)   50 units to front_right motor
 
 ii) -50 units to front_left motor
