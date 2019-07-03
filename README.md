@@ -71,4 +71,16 @@ rosrun fly_bot control.py
 
 You should see the Quadcopter fly upwards while stabilizing itself.
 
+Alternatively, you can provide commands to individual motors (here, there is no PID control and stabilization of the Quad):
+```
+rostopic pub -1 /Kwad/joint_motor_controller/command std_msgs/Float64MultiArray "data: [50, -50, 50, -50]"
+```
+This provides a speed of:
+i)   50 units to front_right motor
+ii) -50 units to front_left motor
+iii) 50 units to back_left motor
+iv) -50 units to back_right motor
+Here, the negative sign denotes rotation in the opposite direction.
+
+
 The pid values are in the /src/pid.py file in your fly_bot directory. Play around with the values to see some control theory in action!
