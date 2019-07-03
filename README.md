@@ -1,2 +1,74 @@
+
 # ROS-Quadcopter-Simulation
 This is an on-going project on simulating drone and its applications on ROS-Gazebo
+
+This is a simulation of Joop-Brokking's Quadcopter. He has great tutorial videos on YouTube:
+YouTube Channel: https://www.youtube.com/channel/UCpJ5uKSLxP84TXQtwiRNm1g
+Website: http://www.brokking.net/
+
+The Model of the Quad is written in .xacro format, and is imported in Gazebo simulator.
+
+All the mass, moment of inertia etc are identical to the DJI-f450 frame. Further, the libLiftDragPlugin and ROS_control plugins have been used, to provide lift due the rotating propellers, and providing accurate velocities to the four BLDC motors respectively.
+
+Any progress/add-ons will be updated in this repository.
+
+# Installation #
+
+Make sure you've installed ROS and Gazebo on your systems.
+
+Open a terminal.
+1. Initiate a workspace in your home directory or use your existing favorite one.
+```
+source /opt/ros/melodic/setup.bash 
+
+mkdir -p ~/danger_ws/src
+cd ~/danger_ws/src
+catkin_init_workspace
+```
+
+2.Create necessary workspace files
+```
+cd ~/danger_ws
+catkin_make
+```
+
+3.Add this workspace to your linux environment by sourcing the setup file to .bashrc. Assuming you are inside the home directory, 
+```
+gedit .bashrc
+```
+Add this line at the end of the file.
+```
+source ~/danger_ws/devel/setup.bash
+```
+
+4.Create a ROS package in your workspace. We will call it fly_bot. Add the rospy and std_msgs dependencies
+```
+cd ~/danger_ws/src
+catkin_create_pkg fly_bot rospy std_msgs
+```
+
+5.Download all the folders and files into the folder fly_bot.
+
+6.Execute the following command to build into your ROS workspace
+```
+cd ~/danger_ws
+catkin_make
+```
+
+This should build the directory without any errors. If you find any errors, please check your steps with those mentioned here.
+
+Once installed, load the quadcopter into gazebo simulator
+```
+roslaunch fly_bot Kwad_gazebo.launch
+```
+
+This should load the Quadcopter into Gazebo simulator. You may get some errors of sort "No p gains mentioned in pid...." and that's fine.
+
+For the quadCopter to just hover in mid-air, open another terminal and type in the following command
+```
+rosrun fly_bot control.py
+```
+
+You should see the Quadcopter fly upwards while stabilizing itself.
+
+The pid values are in the /src/pid.py file in your fly_bot directory. Play around with the values to see some control theory in action!
