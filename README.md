@@ -3,8 +3,11 @@
 This is an on-going project on simulating drone and its applications on ROS-Gazebo
 
 This is a simulation of Joop-Brokking's Quadcopter. He has great tutorial videos on YouTube:
+
 YouTube Channel: https://www.youtube.com/channel/UCpJ5uKSLxP84TXQtwiRNm1g
+
 Website: http://www.brokking.net/
+
 
 The Model of the Quad is written in .xacro format, and is imported in Gazebo simulator.
 
