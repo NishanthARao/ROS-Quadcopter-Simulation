@@ -11,7 +11,7 @@ Website: http://www.brokking.net/
 
 The Model of the Quad is written in .xacro format, and is imported in Gazebo simulator.
 
-All the mass, moment of inertia etc are identical to the DJI-f450 frame. Further, the libLiftDragPlugin and ROS_control plugins have been used, to provide lift due the rotating propellers, and providing accurate velocities to the four BLDC motors respectively.
+All the mass, moment of inertia etc are identical to the DJI-f450 frame. Further, the libLiftDragPlugin and ROS_control plugins have been used, to provide lift due to the rotating propellers, and providing accurate velocities to the four BLDC motors respectively.
 
 Any progress/add-ons will be updated in this repository.
 
