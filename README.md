@@ -19,6 +19,11 @@ Any progress/add-ons will be updated in this repository.
 
 Make sure you've installed ROS and Gazebo on your systems.
 
+Additionally, you have to install the following packages:
+```
+sudo apt-get install ros-melodic-gazebo-ros-pkgs ros-melodic-gazebo-ros-control ros-melodic-ros-control ros-melodic-ros-controllers
+```
+
 Open a terminal.
 1. Initiate a workspace in your home directory or use your existing favorite one.
 ```
