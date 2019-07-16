@@ -15,7 +15,7 @@ All the mass, moment of inertia etc are identical to the DJI-f450 frame. Further
 
 Any progress/add-ons will be updated in this repository.
 
-![Image](https://github.com/NishanthARao/ROS-Quad-Joystick-control/blob/master/Screenshot.png)
+![Image](https://github.com/NishanthARao/ROS-Quadcopter-Simulation/blob/master/Image.png)
 
 # Installation #
 
