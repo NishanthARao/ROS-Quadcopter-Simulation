@@ -60,7 +60,7 @@ catkin_create_pkg fly_bot rospy std_msgs
 
 5.Download all the folders and files into the folder fly_bot. i.e all the folders and files seen in this repo must be present inside the fly_bot. Donot create another folder inside the fly_bot with all theses files.
 
-Note: You may have to replace the existing src folder and CMakeLists and package files with these folder and files.
+Note: You have to replace the existing src folder and CMakeLists and package files with this repo's folder and files.
 
 6.Execute the following command to build into your ROS workspace
 ```
