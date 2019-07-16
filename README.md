@@ -15,6 +15,8 @@ All the mass, moment of inertia etc are identical to the DJI-f450 frame. Further
 
 Any progress/add-ons will be updated in this repository.
 
+![Image](https://github.com/NishanthARao/ROS-Quad-Joystick-control/blob/master/Screenshot.png)
+
 # Installation #
 
 Make sure you've installed ROS and Gazebo on your systems.
@@ -73,7 +75,7 @@ Once installed, close the terminal. Open another terminal and load the quadcopte
 roslaunch fly_bot Kwad_gazebo.launch
 ```
 
-This should load the Quadcopter into Gazebo simulator. You may get some errors of sort "No p gains mentioned in pid...." and that's fine.
+This should load the Quadcopter into Gazebo simulator. You may get some errors of sort "No p gains mentioned in pid....", "Bad callback; IndexError: Out of index" - and that's fine.
 
 For the quadCopter to just hover in mid-air, open another terminal and type in the following command
 ```
