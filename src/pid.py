@@ -56,11 +56,11 @@ def PID(roll, pitch, yaw, f):
 		pMem_pitch = kp_pitch * err_pitch
 		pMem_yaw = kp_yaw * err_yaw
 		
+		#integral(e(t))
 		iMem_roll += err_pitch * dTime
 		iMem_pitch += err_roll * dTime
 		iMem_yaw += err_yaw * dTime
 		
-		#integral(e(t))
 		if(iMem_roll > 400): iMem_roll = 400
 		if(iMem_roll < -400): iMem_roll = -400
 		if(iMem_pitch > 400): iMem_pitch = 400
