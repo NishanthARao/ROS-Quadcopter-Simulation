@@ -15,8 +15,9 @@ def control_kwad(msg, args):
 	f = Float64MultiArray()
 	
 	#Convert the quaternion data to roll, pitch, yaw data
-	#The model_states contains the position, orientation, velocities of all objects in gazebo. In the simulation, there are 3 objects: ground, Contruction_cone, and the quadcopter. So 'msg.pose[2]' will access the 3rd object's pose information i.e the quadcopter's pose.
-	orientationObj = msg.pose[2].orientation
+	#The model_states contains the position, orientation, velocities of all objects in gazebo. In the simulation, there are objects like: ground, Contruction_cone, quadcopter (named as 'Kwad') etc. So 'msg.pose[ind]' will access the 'Kwad' object's pose information i.e the quadcopter's pose.
+	ind = msg.name.index('Kwad')
+	orientationObj = msg.pose[ind].orientation
 	orientationList = [orientationObj.x, orientationObj.y, orientationObj.z, orientationObj.w]
 	(roll, pitch, yaw) = (euler_from_quaternion(orientationList))
 	
