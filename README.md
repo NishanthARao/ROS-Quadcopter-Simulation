@@ -23,6 +23,8 @@ Make sure you've installed ROS and Gazebo on your systems.
 
 Additionally, you have to install the following packages:
 ```
+sudo apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654 
+sudo apt-get update
 sudo apt-get install ros-melodic-gazebo-ros-pkgs ros-melodic-gazebo-ros-control ros-melodic-ros-control ros-melodic-ros-controllers
 ```
 
@@ -76,6 +78,13 @@ danger_ws/src/fly_bot
   -urdf.rviz
 ```
 
+Then,
+```
+cd ~/danger_ws/src/fly_bot/src
+chmod u+x control.py
+chmod u+x pid.py
+```
+
 6.Execute the following command to build into your ROS workspace
 ```
 cd ~/danger_ws
@@ -89,7 +98,7 @@ Once installed, close the terminal. Open another terminal and load the quadcopte
 roslaunch fly_bot Kwad_gazebo.launch
 ```
 
-This should load the Quadcopter into Gazebo simulator. You may get some errors of sort "No p gains mentioned in pid....", "Bad callback; IndexError: Out of index" - and that's fine.
+This should load the Quadcopter into Gazebo simulator. You may get some errors of sort "No p gains mentioned in pid....", "Bad callback; IndexError: Out of index" or "No name 'Kwad' found" - and that's fine.
 
 For the quadCopter to just hover in mid-air, open another terminal and type in the following command
 ```
