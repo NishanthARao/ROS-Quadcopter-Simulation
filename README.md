@@ -27,6 +27,9 @@ sudo apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31
 sudo apt-get update
 sudo apt-get install ros-melodic-gazebo-ros-pkgs ros-melodic-gazebo-ros-control ros-melodic-ros-control ros-melodic-ros-controllers
 ```
+If you have kinetic version, please follow the instructions of ros-control here:
+
+http://wiki.ros.org/ros_control
 
 Open a terminal.
 1. Initiate a workspace in your home directory or use your existing favorite one.
